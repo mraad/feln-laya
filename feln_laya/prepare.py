@@ -10,7 +10,7 @@ from pathlib import Path
 
 from feln import FELN
 from feln.compare import canonical_text
-from feln.generate import generate
+from feln.generate import _like_operator, generate
 from feln_type.data import gold_spans, load_records, rows_from
 from feln_type.decompose import compose, decompose, gold_answers
 from feln_type.state import catalog_sha
@@ -38,11 +38,22 @@ def prepare(catalog_path, examples_path, output, holdout=200, seed=0, generated=
         from sqlglot import exp
 
         migrated = []
-        for old in gold.where:
+        for name, old in zip(gold.layers, gold.where, strict=True):
+            insensitive = {
+                c.name.casefold()
+                for c in catalog.find_layer(name).columns
+                if _like_operator(c) == "ILIKE"
+            }
             tree = parse_where(old) if old else None
             if tree is not None:
                 tree = tree.transform(
-                    lambda n: exp.ILike(**n.args) if isinstance(n, exp.Like) else n
+                    lambda n: (
+                        exp.ILike(**n.args)
+                        if isinstance(n, exp.Like)
+                        and isinstance(n.this, exp.Column)
+                        and n.this.name.casefold() in insensitive
+                        else n
+                    )
                 )
             migrated.append(tree.sql(dialect="duckdb") if tree is not None else "")
         allowed = FELN(layers=gold.layers, where=migrated, relations=gold.relations)

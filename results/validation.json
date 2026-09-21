@@ -1,7 +1,7 @@
 {
   "date": "2026-09-21",
   "unit_tests": {
-    "passed": 9,
+    "passed": 21,
     "native_opt_in_skipped": 1
   },
   "mlx_parity": {

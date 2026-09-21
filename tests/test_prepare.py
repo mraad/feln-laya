@@ -48,3 +48,48 @@ def test_migration_split_and_source_preservation(tmp_path):
     assert report["train_examples"] + len(held) == 5
     with pytest.raises(FileExistsError):
         prepare(cp, rp, out, holdout=1)
+
+
+def test_migration_preserves_case_sensitive_columns(tmp_path):
+    catalog = {
+        "layers": [
+            {
+                "name": "Wells",
+                "stype": "Point",
+                "columns": [
+                    {
+                        "name": "NAME",
+                        "dtype": "String",
+                        "values": ["Alpha"],
+                        "hints": ["Use SQL ILIKE."],
+                    },
+                    {
+                        "name": "TAG",
+                        "dtype": "String",
+                        "values": ["Marker"],
+                        "hints": ["Use SQL LIKE."],
+                    },
+                ],
+            }
+        ]
+    }
+    rows = [
+        {
+            "text": f"wells with name containing '{name}' and tag containing 'Marker'",
+            "meta": {
+                "layers": ["Wells"],
+                "where": [f"name LIKE '%{name}%' AND TAG LIKE '%Marker%'"],
+                "relations": [],
+            },
+        }
+        for name in ["Alpha", "Beta"]
+    ]
+    cp, rp = tmp_path / "Layers.json", tmp_path / "FELN.json"
+    cp.write_text(json.dumps(catalog))
+    rp.write_text(json.dumps(rows))
+    out = tmp_path / "prepared"
+    report = prepare(cp, rp, out, holdout=1)
+    assert report["migrated"] == 2
+    for row in json.loads((out / "FELN.json").read_text()):
+        assert "NAME ILIKE" in row["meta"]["where"][0]
+        assert "TAG LIKE" in row["meta"]["where"][0]

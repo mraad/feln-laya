@@ -2,7 +2,7 @@
 
 ## Verification
 
-- Nine unit tests pass. The native MLX checkpoint test is opt-in and passed on
+- Twenty-one unit test cases pass, including the pre-merge review regressions. The native MLX checkpoint test is opt-in and passed on
   the newly trained `out/small` checkpoint.
 - Original NorthSea FELN.json: 2,569/3,000 roundtrip with current catalog rules.
   Migrated local copy: 3,000/3,000; 431 LIKE→ILIKE changes, source unchanged.

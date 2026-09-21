@@ -140,3 +140,46 @@ def test_multiple_primaries_and_extra_values_are_not_silently_dropped():
     reasons = composition_issues(pred, catalog)
     assert any("primary" in r for r in reasons)
     assert any("Ambiguous values" in r for r in reasons)
+
+
+def test_one_literal_can_filter_two_layers_without_dropping_either_filter():
+    catalog = Layers.model_validate(
+        {
+            "layers": [
+                {
+                    "name": name,
+                    "stype": stype,
+                    "columns": [{"name": "country", "dtype": "String", "values": ["NO", "UK"]}],
+                }
+                for name, stype in [("Wells", "Point"), ("Pipes", "Polyline")]
+            ]
+        }
+    )
+    text = "Find intersecting wells and pipes that are both in 'NO'."
+    gold = FELN(
+        layers=["Wells", "Pipes"],
+        where=["country = 'NO'", "country = 'NO'"],
+        relations=["intersects"],
+    )
+    ex = decompose(catalog, text, gold)
+    answers = gold_answers(ex)
+    assert answers["val|Wells|country"] == answers["val|Pipes|country"]
+    assert sum(answers["val|Wells|country"].values()) == 1
+    composed = compose(catalog, ex, answers)
+    assert composed.feln.same(gold)
+    groups = {
+        g.key: GroupResult(
+            g.kind,
+            max(answers[g.key], key=answers[g.key].get) if answers[g.key] else None,
+            answers[g.key],
+            1,
+        )
+        for g in ex.groups
+    }
+    pred = Prediction(composed, groups)
+    engine = stub_engine(1)
+    engine.catalog = catalog
+    engine.predictor.predict = lambda *args: pred
+    result = engine.ask(text)
+    assert result["status"] == "accepted"
+    assert FELN(**result["meta"]).same(gold)

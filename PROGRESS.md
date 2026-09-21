@@ -182,3 +182,18 @@ The gc3 data-transfer approval was explicitly granted and the earlier block reso
 No pending permission or implementation step remains. Known model/data limitations
 are documented; the original 200-example holdout is a development set after recipe
 comparison, not a pristine final test. No SQL was executed.
+
+## Pre-merge review follow-up
+
+Checked all three CodeRabbit findings against the implementation and local composer.
+Fixed invalid CLI thresholds being treated as successful per-row abstentions, and
+restricted LIKE→ILIKE migration to the individual catalog column's rule (mixed
+case-sensitive and case-insensitive columns now work).
+
+The proposed global cross-layer span restriction was rejected: the actual shared
+composer deduplicates within each layer and preserves both filters when one literal
+applies to two layers. A real decompose/compose/Engine regression test verifies this;
+the existing same-layer conflict test remains in place. No inference behavior changed.
+
+Validation: 21 unit cases passed, 1 optional native-GPU case skipped; Ruff lint and
+format checks passed. Merge is pending the updated remote review/check status.

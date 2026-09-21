@@ -65,6 +65,8 @@ def main():
             json.dumps({"n": len(rows), "passed": len(rows) - len(failures), "failures": failures})
         )
         return int(bool(failures))
+    if not 0 <= args.threshold <= 1:
+        parser.error("--threshold must be between zero and one")
     engine = Engine(
         args.catalog, args.model, backend=args.backend, device=args.device, batch=args.batch
     )

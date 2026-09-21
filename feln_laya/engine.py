@@ -114,6 +114,7 @@ def composition_issues(pred, catalog):
     if primaries != [f"role|{primary}"]:
         issues.append("No consistent primary-layer decision")
     for name in pred.feln.layers:
+        # The composer deduplicates within a layer; one literal may filter multiple layers.
         claimed = set()
         layer = catalog.find_layer(name)
         for col in layer.columns:
