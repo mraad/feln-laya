@@ -1,0 +1,35 @@
+{
+ "base": "BAAI/bge-small-en-v1.5",
+ "device": "cuda",
+ "device_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+ "torch": "2.14.0+cu130",
+ "dtype": "fp32",
+ "max_len": 128,
+ "batch": 256,
+ "span_batch": 16,
+ "lr": 3e-05,
+ "epochs": 3,
+ "train_rows": 311438,
+ "train_span_rows": 5657,
+ "positive_rows": 96994,
+ "catalog_sha": "890d2c62263b3c4d",
+ "started": "2026-09-21T15:43:46",
+ "epoch_seconds": [
+  163.1,
+  162.3,
+  162.3
+ ],
+ "epoch_loss": [
+  0.2881,
+  0.0716,
+  0.0444
+ ],
+ "rows_per_second": [
+  1909.6,
+  1919.2,
+  1918.5
+ ],
+ "peak_memory_gb": 11.3,
+ "total_seconds": 488.6,
+ "eval": {}
+}

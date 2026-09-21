@@ -1,0 +1,17 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 13846.72it/s]
+tokenized 156307 pairs + 2800 span rows in 3s
+epoch 1 step 200/611 loss 0.6539 2371 rows/s elapsed 0.4 min
+epoch 1 step 400/611 loss 0.4490 2414 rows/s elapsed 0.7 min
+epoch 1 step 600/611 loss 0.3617 2425 rows/s elapsed 1.1 min
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.34it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.32it/s]
+epoch 1 done in 1.1 min, loss 0.3583, saved out/small
+epoch 2 step 189/611 loss 0.1529 2449 rows/s elapsed 0.3 min
+epoch 2 step 389/611 loss 0.1465 2456 rows/s elapsed 0.7 min
+epoch 2 step 589/611 loss 0.1383 2453 rows/s elapsed 1.0 min
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]
+epoch 2 done in 1.1 min, loss 0.1376, saved out/small
+epoch 3 step 178/611 loss 0.1097 2455 rows/s elapsed 0.3 min
+epoch 3 step 378/611 loss 0.1054 2455 rows/s elapsed 0.7 min
+epoch 3 step 578/611 loss 0.1036 2460 rows/s elapsed 1.0 min
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.53it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.52it/s]
+epoch 3 done in 1.1 min, loss 0.1033, saved out/small

@@ -1,0 +1,8 @@
+[
+  {"text":"Find all gas/condensate wells.","meta":{"layers":["Wells"],"where":["content_type = 7"],"relations":[]}},
+  {"text":"Find wells with water depth greater than 1234 meters.","meta":{"layers":["Wells"],"where":["water_depth > 1234"],"relations":[]}},
+  {"text":"Find wells within 7 kilometers of pipelines.","meta":{"layers":["Wells","Pipelines"],"where":["",""],"relations":["withinDistance 7 kilometers"]}},
+  {"text":"Find wells more than 37 meters from every pipeline.","meta":{"layers":["Wells","Pipelines"],"where":["",""],"relations":["notWithinDistance 37 meters"]}},
+  {"text":"Find wells in Norway.","meta":{"layers":["Wells"],"where":["country = 'NO'"],"relations":[]}},
+  {"text":"Find pipelines operated by 'EXAMPLE ENERGY'.","meta":{"layers":["Pipelines"],"where":["current_operator = 'EXAMPLE ENERGY'"],"relations":[]}}
+]

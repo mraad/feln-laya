@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-21",
+  "unit_tests": {
+    "passed": 9,
+    "native_opt_in_skipped": 1
+  },
+  "mlx_parity": {
+    "checkpoint": "out/expanded-small",
+    "passed": true,
+    "atol": 0.0002,
+    "rtol": 0.0002,
+    "checks": [
+      "card logits with sorted minibatches",
+      "BIO logits with padding",
+      "decoded spans"
+    ]
+  },
+  "original_roundtrip": {
+    "passed": 2569,
+    "total": 3000
+  },
+  "migrated_roundtrip": {
+    "passed": 3000,
+    "total": 3000
+  },
+  "train_heldout_identical_text_overlap": 0,
+  "cuda_smoke": {
+    "host": "gc3",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "device": 0,
+    "passed": true,
+    "catalog_sha": "da07bdf016fbb33d",
+    "evidence": "cuda-smoke.json",
+    "note": "Existing remote catalog/model; separate from current-state training"
+  },
+  "final_backend_agreement": {
+    "heldout": {
+      "n": 200,
+      "candidate_agreement": 200,
+      "status_agreement": 200,
+      "maximum_confidence_difference": 0.0001000000000000445
+    },
+    "examples": {
+      "n": 6,
+      "candidate_agreement": 6,
+      "status_agreement": 6,
+      "maximum_confidence_difference": 0.0
+    }
+  }
+}

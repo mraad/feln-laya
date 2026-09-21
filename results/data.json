@@ -1,0 +1,12 @@
+{
+  "catalog_sha": "890d2c62263b3c4d",
+  "train_examples": 2800,
+  "train_rows": 156307,
+  "heldout": 200,
+  "seed": 0,
+  "augmentation": false,
+  "source_sha256": "3df78de7d86f8f37652c7558cea52b5aa0a29d8e321884168ada13bed181980f",
+  "migrated": 431,
+  "source_records": 3000,
+  "split": "disjoint normalized FELN query groups; seed 0"
+}
