@@ -1,8 +1,8 @@
 # gc3 runbook
 
 The user authorized transferring NorthSea catalog and derived examples on 2026-09-21.
-The isolated run directory is `/home/ubuntu/feln-laya-20260921`. The existing
-`/home/ubuntu/feln-type/.venv/bin/python` supplies CUDA dependencies. The local
+The isolated run directory is `~/feln-laya-20260921`. The existing
+`~/feln-type/.venv/bin/python` supplies CUDA dependencies. The local
 `feln_type` source was copied into the isolated run directory for matching evaluation;
 the pre-existing reference project was not modified.
 
@@ -10,7 +10,7 @@ Training command, run from that directory:
 
 ```sh
 CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=8 HF_HUB_OFFLINE=1 \
-  /home/ubuntu/feln-type/.venv/bin/python -u -m feln_laya.cli \
+  ~/feln-type/.venv/bin/python -u -m feln_laya.cli \
   train out/current out/small --device cuda --batch 256
 ```
 
@@ -23,7 +23,7 @@ Evaluate the held-out split:
 
 ```sh
 CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=8 HF_HUB_OFFLINE=1 \
-  /home/ubuntu/feln-type/.venv/bin/python -m feln_laya.cli \
+  ~/feln-type/.venv/bin/python -m feln_laya.cli \
   evaluate out/current/Layers.json out/current/heldout.jsonl \
   --model out/small --device cuda --output results/cuda-heldout.jsonl
 ```

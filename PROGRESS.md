@@ -9,7 +9,7 @@ Request: a simple Jev-like implementation using local references, project state
 - Read references: ../feln (FELN validation/comparison/SQL), ../layers-json
   (typed catalog), ../laya (choice/score/noul), ../decider (typed API),
   ../SemIf (native MLX option-logit scoring).
-- NorthSea: /Users/mraad/Documents/ArcGIS/Projects/NorthSea, containing
+- NorthSea: ${PROJECTS_HOME}/NorthSea, containing
   Layers.json, OKF, and 3,000 humanized text/meta examples in FELN.json.
 - Found an existing adjacent ../feln-type implementation of atomic decisions
   and composition, with trained cross-encoders. Inspect before duplicating it.
@@ -65,9 +65,9 @@ No project data or reference source has been modified. No models trained yet.
 - CUDA smoke **passed** on gc3 GPU 0 using only the catalog/checkpoint already
   resident there. Uploaded implementation source and synthetic tests only; no
   NorthSea catalog or derived training examples were uploaded.
-- Remote directory: `/home/ubuntu/feln-laya-cuda-smoke`.
-  Existing checkpoint: `/home/ubuntu/feln-type/out/gc3-small`.
-  Existing catalog: `/home/ubuntu/data/northsea/Layers.json` (old hash da07bdf016fbb33d).
+- Remote directory: `~/feln-laya-cuda-smoke`.
+  Existing checkpoint: `~/feln-type/out/gc3-small`.
+  Existing catalog: `~/data/northsea/Layers.json` (old hash da07bdf016fbb33d).
 - Request: Find wells within 5 kilometers of pipelines.
   Candidate correct: Wells/Pipelines, empty filters, withinDistance 5 kilometers.
   Confidence 0.1179, status abstain at threshold 0.8, 0.365 s inference.
@@ -89,15 +89,15 @@ The current implementation follows this scope.
 
 The user explicitly approved copying NorthSea catalog and derived examples to gc3.
 The prior upload block is resolved. Copied source plus out/current to isolated
-`gc3:/home/ubuntu/feln-laya-20260921` and started:
+`gc3:~/feln-laya-20260921` and started:
 
 ```
 CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=8 HF_HUB_OFFLINE=1 \
-/home/ubuntu/feln-type/.venv/bin/python -u -m feln_laya.cli \
+~/feln-type/.venv/bin/python -u -m feln_laya.cli \
 train out/current out/small --device cuda --batch 256
 ```
 
-Remote log: `/home/ubuntu/feln-laya-20260921/train.log`.
+Remote log: `~/feln-laya-20260921/train.log`.
 Launcher PID reported 2972464. Check `out/small/run.json` for saved epochs.
 Stopped duplicate local MPS training PID 30252 with SIGINT. No local completed
 checkpoint was used. Next: finish remote three epochs, evaluate on CUDA, download
@@ -107,7 +107,7 @@ Remote provenance check: model.py, predict.py and cards.py match local SHA256;
 decompose.py differs in the older remote checkout. Training consumes already-built
 cards and the identical model.py, so this does not affect training. Copied the local
 feln_type package into the isolated remote work directory for matching evaluation;
-the shared `/home/ubuntu/feln-type` checkout remains unchanged.
+the shared `~/feln-type` checkout remains unchanged.
 
 ## Baseline complete; training coverage issue found
 
@@ -139,7 +139,7 @@ the shared `/home/ubuntu/feln-type` checkout remains unchanged.
   pristine final test set. Preserve baseline evidence.
 
 Expanded run launched (PID reported 2980131):
-`gc3:/home/ubuntu/feln-laya-20260921/out/expanded-small`, log `expanded-train.log`.
+`gc3:~/feln-laya-20260921/out/expanded-small`, log `expanded-train.log`.
 Dataset out/expanded-v2 has 5,657 examples, 311,438 cards; 2,857 generated added,
 26 generated rejected/audited. Original holdout SHA256 remains
 0bfef754a79ac9cbef86cb94ba01f62e2ac663b3e7afe58da407be8057f790f1.

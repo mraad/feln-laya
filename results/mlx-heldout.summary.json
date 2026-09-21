@@ -9,7 +9,7 @@
   "median_seconds": 0.16130827048618812,
   "total_inference_seconds": 33.30213891129824,
   "backend": "mlx",
-  "model": "/Users/mraad/GWorkspace/feln-laya/out/small",
+  "model": "./out/small",
   "catalog_sha": "890d2c62263b3c4d",
   "data_sha256": "0bfef754a79ac9cbef86cb94ba01f62e2ac663b3e7afe58da407be8057f790f1",
   "note": "Structural evaluation only; no SQL executed. Training overlap depends on supplied split."
