@@ -1,0 +1,16 @@
+{
+  "n": 200,
+  "same": 0.74,
+  "valid": 0.995,
+  "partial": 0.9341389475500453,
+  "coverage": 0.535,
+  "accepted_accuracy": 0.9158878504672897,
+  "threshold": 0.8,
+  "median_seconds": 0.16154358298808802,
+  "total_inference_seconds": 33.20772825018503,
+  "backend": "mlx",
+  "model": "/Users/mraad/GWorkspace/feln-laya/out/expanded-small",
+  "catalog_sha": "890d2c62263b3c4d",
+  "data_sha256": "0bfef754a79ac9cbef86cb94ba01f62e2ac663b3e7afe58da407be8057f790f1",
+  "note": "Structural evaluation only; no SQL executed. Training overlap depends on supplied split."
+}

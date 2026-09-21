@@ -1,0 +1,21 @@
+{
+  "feln_type_source_sha256": {
+    "model": "f384502e55b19963aff838c9bf2f2c5a36f35ad00e7edaa535edaff45f7eb0be",
+    "predict": "5a6afe1bbc8c406727ce141353d5a114ec6393f6b9908168e5479274e5b3c47c",
+    "cards": "1e97f9bb60197cd22189b5518d2112caed3fb29c6a6e7c0f2f54a2df6df7e3ce",
+    "decompose": "bef67fb953c8f2f82db7855c9432173b60a513a9be736b0117653ea741158255"
+  },
+  "local_versions": {
+    "torch": "2.14.0",
+    "mlx": "0.32.2",
+    "numpy": "2.5.3",
+    "transformers": "5.17.0",
+    "feln": "0.1.2",
+    "layers-json": "0.4.2"
+  },
+  "final_model_sha256": {
+    "encoder/model.safetensors": "05875d11c0d3ff2f40fd44a3bbe5c451c72cbfcb883473ff324e740faacd0f1f",
+    "heads.pt": "f11646eab5ca48544b8a903a812b00ebcbe64cf2aeb0df8e3ec002622e608a3d",
+    "config.json": "d1092eab6892f280646fe9021880ebcaf6b9b6b23d9b319c65e4adc2c99ae571"
+  }
+}

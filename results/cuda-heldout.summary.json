@@ -1,0 +1,16 @@
+{
+  "n": 200,
+  "same": 0.55,
+  "valid": 0.985,
+  "partial": 0.8678475837427689,
+  "coverage": 0.29,
+  "accepted_accuracy": 0.7758620689655172,
+  "threshold": 0.8,
+  "median_seconds": 0.058613845496438444,
+  "total_inference_seconds": 12.478691112948582,
+  "backend": "torch",
+  "model": "/home/ubuntu/feln-laya-20260921/out/small",
+  "catalog_sha": "890d2c62263b3c4d",
+  "data_sha256": "0bfef754a79ac9cbef86cb94ba01f62e2ac663b3e7afe58da407be8057f790f1",
+  "note": "Structural evaluation only; no SQL executed. Training overlap depends on supplied split."
+}
